@@ -19,9 +19,15 @@ quantity = int(input("Enter Quantity:"))
 print("Quantity:   ",quantity)
 delivery_date = input("Enter Delivery Date:")
 print("Delivery date   :",delivery_date)
-price = int(input("Enter Price:"))
+price = int(input("Enter Price: "))
+while price <= 0:
+    print("Price must be greater than zero.")
+    price = int(input("Enter Price:"))
 print("Price   :N",price)
 deposit = int(input("Enter Deposit:"))
+while deposit <= 0 or deposit > price:
+    print("Deposit must be greater than zero, and cannot be more than price.")
+    deposit = int(input("Enter Deposit:"))
 print("Deposit   :N",deposit)
 balance = price - deposit
 print("Balance   :N",balance)

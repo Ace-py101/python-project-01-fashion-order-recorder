@@ -15,6 +15,13 @@ This is a beginner Python project that records a fashion customer's order and pr
 - Collects deposit
 - Calculates remaining balance
 - Prints a formatted receipt
+- Collects customer details
+- Calculates remaining balance
+- Prints a formatted receipt
+- Validates price input
+- Prevents zero or negative prices
+- Validates deposit input
+- Prevents deposits greater than the total price
 
 ## Technologies Used
 

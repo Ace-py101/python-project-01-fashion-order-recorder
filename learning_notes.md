@@ -200,3 +200,27 @@ micro  - Edit files
 ## Goal for Project 2
 
 Learn how to make decisions in Python using `if` statements and improve the Fashion House Order Recorder with input validation.
+
+## Update 1 - Input Validation
+
+### New Concept: while Loop for Validation
+
+A `while` loop keeps running as long as its condition is True.
+
+Example:
+
+```python
+while price <= 0:
+    print("Price must be greater than zero.")
+    price = int(input("Enter Price: "))
+
+        ## What I Learned
+- Variables
+- User input with `input()
+- Integer conversion using `int()`
+- Basic arithmetic
+- Input validation
+- `while` loops
+- Logical operators (`or`)
+- Preventing invalid user input
+- Avoiding infinite loops

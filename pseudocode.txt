@@ -12,9 +12,22 @@ Ask user for delivery date
 
 Ask user for price
 
-Ask user for deposit
 
-Calculate balance
+IF price is less than or equal to zero
+    Keep asking until a valid price is entered
+    END IF
+
+    Ask user for deposit
+
+    IF deposit is less than or equal to zero
+        Keep asking until a valid deposit is entered
+        END IF
+
+        IF deposit is greater than price
+            Keep asking until a valid deposit is entered
+            END IF
+
+            Calculate balance
 
 Display receipt title
 
