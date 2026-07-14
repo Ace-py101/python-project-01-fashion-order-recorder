@@ -1,0 +1,39 @@
+START
+
+Ask user for customer's name
+
+Ask user for phone number
+
+Ask user for garment type
+
+Ask user for quantity
+
+Ask user for delivery date
+
+Ask user for price
+
+Ask user for deposit
+
+Calculate balance
+
+Display receipt title
+
+Display customer name
+
+Display phone number
+
+Display garment type
+
+Display quantity
+
+Display delivery date
+
+Display price
+
+Display deposit
+
+Display balance
+
+Display thank you message
+
+END
