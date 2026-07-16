@@ -22,6 +22,12 @@ This is a beginner Python project that records a fashion customer's order and pr
 - Prevents zero or negative prices
 - Validates deposit input
 - Prevents deposits greater than the total price
+- Validates quantity input
+- Validates price input
+- Validates deposit input
+- Handles invalid input using try/except
+- Prevents negative or zero values
+- Prevents deposit greater than the total price
 
 ## Technologies Used
 
@@ -45,3 +51,9 @@ python main.py
 - Basic arithmetic
 - Storing values in variables
 - Calculating balance
+- while True loops
+- try/except for error handling
+- ValueError exception
+- break statement
+- Input validation
+- Logical operators (or)

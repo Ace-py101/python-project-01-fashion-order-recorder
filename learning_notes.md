@@ -224,3 +224,23 @@ while price <= 0:
 - Logical operators (`or`)
 - Preventing invalid user input
 - Avoiding infinite loops
+
+## Update 1.1 - Input Validation
+
+Today I improved my Fashion House Order Recorder by adding proper input validation.
+
+Concepts learned:
+
+- while True creates a loop that keeps asking until valid input is entered.
+- try catches code that may raise an error.
+- except ValueError handles invalid inputs such as letters or symbols when an integer is expected.
+- break immediately exits the loop once valid input is received.
+- The loop continues automatically after an exception unless break is reached.
+- The "or" logical operator allows checking multiple conditions in one statement.
+- Business rules can also be validated, such as:
+- Price must be greater than zero.
+- Quantity must be at least 1.
+- Deposit must be greater than zero.
+- Deposit cannot be greater than the total price.
+
+This made the program much more reliable and user-friendly.
