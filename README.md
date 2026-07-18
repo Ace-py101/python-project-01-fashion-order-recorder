@@ -86,3 +86,13 @@ python main.py
 - Must contain only digits.
 - Must be exactly 11 digits.
 - Must start with `0`.
+
+### Garment Type Validation
+
+The application validates garment type by ensuring that:
+
+- The input is not empty.
+- Only letters and spaces are allowed.
+- The input contains at least 3 letters.
+- Extra spaces are removed automatically.
+- Each word is automatically capitalized.

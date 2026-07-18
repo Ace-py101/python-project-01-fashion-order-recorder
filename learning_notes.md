@@ -290,3 +290,18 @@ This made the program much more reliable and user-friendly.
 - Fixed missing parentheses in `len()` validation.
 - Fixed a logic error where an invalid phone number was accepted because I forgot to use `continue`.
                 
+## Garment Type Validation
+
+### Validation Added
+
+- Garment type cannot be empty.
+- Garment type must contain only letters and spaces.
+- Garment type must contain at least 3 letters.
+- Removes unnecessary spaces between words.
+- Automatically capitalizes the first letter of each word.
+
+### What I Learned
+
+- Similar validation logic can be reused for different text inputs.
+- The combination of `split()`, `" ".join()`, and `title()` helps clean and format user input.
+- Using `continue` ensures invalid input is rejected and the user is prompted again.
