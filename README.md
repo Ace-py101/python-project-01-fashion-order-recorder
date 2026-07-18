@@ -28,6 +28,13 @@ This is a beginner Python project that records a fashion customer's order and pr
 - Handles invalid input using try/except
 - Prevents negative or zero values
 - Prevents deposit greater than the total price
+- Collects customer details.
+- Validates customer name.
+- Validates phone number.
+- Validates quantity.
+- Validates price.
+- Validates deposit amount.
+- Displays a receipt after collecting information.
 
 ## Technologies Used
 
@@ -57,3 +64,25 @@ python main.py
 - break statement
 - Input validation
 - Logical operators (or)
+- Input validation
+- `while` loops
+- `if` statements
+- String methods
+- Error handling
+- Debugging
+- Basic problem-solving
+
+## Customer Name Validation
+
+- Cannot be empty.
+- Must contain only letters and spaces.
+- Minimum of 3 letters.
+- Removes unnecessary spaces.
+- Automatically capitalizes each word.
+
+## Phone Number Validation
+
+- Cannot be empty.
+- Must contain only digits.
+- Must be exactly 11 digits.
+- Must start with `0`.

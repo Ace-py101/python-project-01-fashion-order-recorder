@@ -244,3 +244,49 @@ Concepts learned:
 - Deposit cannot be greater than the total price.
 
 This made the program much more reliable and user-friendly.
+
+# Update 2
+
+## Customer name and phone number validation 
+
+### What I learned
+
+- How to use `while True` loops for input validation.
+- How `continue` asks the user for input again when validation fails.
+- How `break` exits a loop only after all validation checks pass.
+- The difference between syntax errors and logic errors.
+- How to read Python error messages and use them to debug my code.
+- How to validate string input using:
+- `strip()`
+- `replace()`
+- `isalpha()`
+- `isdigit()`
+- `startswith()`
+- `title()`
+- `split()`
+- `" ".join()`
+- The difference between `==` (equal to) and `!=` (not equal to).
+- The importance of indentation in Python.
+
+## Validation added
+
+ ### Customer Name
+- Cannot be empty.
+- Must contain only letters and spaces.
+- Must contain at least 3 letters.
+- Automatically removes extra spaces.
+- Automatically capitalizes each word.
+
+ ### Phone Number
+- Cannot be empty.
+- Must contain only digits.
+- Must be exactly 11 digits.
+- Must start with `0`.
+
+## Problems I solved
+
+- Fixed `AttributeError` caused by writing `startwith()` instead of `startswith()`.
+- Fixed `SyntaxError` caused by using `! =` instead of `!=`.
+- Fixed missing parentheses in `len()` validation.
+- Fixed a logic error where an invalid phone number was accepted because I forgot to use `continue`.
+                
