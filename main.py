@@ -1,3 +1,4 @@
+from datetime import datetime
 # ==========================
 # Fashion House Order Recorder
 # Project 1
@@ -84,11 +85,24 @@ while True:
     print("Invalid input")
     
 print("Quantity:   ",quantity)
-delivery_date = input("Enter Delivery Date:")
+while True:
+  delivery_date = input("Enter deliver date (DD/MM/YYYY): ").strip()
+
+  if delivery_date == "":
+    print("Delivery date cannot be empty")
+    continue
+
+  try:
+    datetime.strptime(delivery_date, "%d/%m/%Y")
+    break
+
+  except ValueError:
+    print("Please enter the date in DD/MM/YYYY formart")
+      
 print("Delivery date   :",delivery_date)
 while True:
    try:
-     price = int(input("Enter Price:"))
+     price = int(input("Enter Price: "))
 
      if price > 0:
        break
@@ -101,7 +115,7 @@ while True:
 print("Price   :N",price)
 while True:
    try:
-     deposit = int(input("Enter deposit:"))
+     deposit = int(input("Enter deposit: "))
 
      if deposit > 0 and deposit <= price:
        break
