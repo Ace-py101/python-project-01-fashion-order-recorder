@@ -51,7 +51,25 @@ while True:
   break
 
 print("Phone number   :",phone_number)
-garment_type = input("Enter Garment type:")
+while True:
+  garment_type = input ("Enter garment type: ").strip()
+
+  if garment_type == "":
+    print("Garment type cannot be empty")
+    continue
+
+  if not garment_type.replace(" ","").isalpha():
+    print("Garment type can only contain letters and spaces")
+    continue
+
+  if len(garment_type.replace(" ","")) < 3:
+    print("Garment must contain at least 3 letters")
+    continue
+
+  garment_type = " ".join(garment_type.split()).title()
+
+  break
+    
 print("Garment type   :",garment_type)
 while True:
   try:
