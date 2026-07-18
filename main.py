@@ -9,9 +9,47 @@
 print("==============================")
 print("      CLIENT RECEIPT")
 print("==============================")
-customer_name = input("Enter Customer name:")
+while True:
+  customer_name = input("Enter Customer name: ").strip()
+
+  if customer_name == "":
+    print("Customer name cannot be empty.")  
+    continue
+
+  if not  customer_name.replace(" ","").isalpha():
+    print("Customer name can only contain letters and spaces")
+    continue
+
+  if len(customer_name.replace(" ","")) < 3:
+    print("Customer name must contain at least 3 letters.")
+    continue
+
+  customer_name = " ".join(customer_name.split()).title()
+
+  break  
+        
 print("Customer name   :",customer_name)
-phone_number = input("Enter Phone number:")
+while True:
+  phone_number = input("Enter phone number: ").strip()
+
+  if phone_number == "":
+    print("Phone number cannot be empty")
+    continue
+
+  if not phone_number.replace(" ","").isdigit():
+    print("Phone number can only contain numebers")
+    continue
+
+  if len(phone_number)!= 11:
+    print("Phone number cannot be less than 11 digits")
+    continue
+
+  if not phone_number.startswith("0"):
+    print("Phone number must start with zero")
+    continue
+
+  break
+
 print("Phone number   :",phone_number)
 garment_type = input("Enter Garment type:")
 print("Garment type   :",garment_type)
