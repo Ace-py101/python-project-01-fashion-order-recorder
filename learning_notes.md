@@ -305,3 +305,25 @@ This made the program much more reliable and user-friendly.
 - Similar validation logic can be reused for different text inputs.
 - The combination of `split()`, `" ".join()`, and `title()` helps clean and format user input.
 - Using `continue` ensures invalid input is rejected and the user is prompted again.
+
+
+## Delivery Date Validation
+
+### Validation Added
+
+- Delivery date cannot be empty.
+- Delivery date must follow the `DD/MM/YYYY` format.
+- Invalid dates are rejected.
+- The user is prompted again until a valid date is entered.
+
+### New Concept Learned
+
+- Imported Python's built-in `datetime` module.
+- Used `datetime.strptime()` to validate dates.
+- Used a `try`/`except` block to catch invalid date entries.
+
+### What I Learned
+
+- Python provides built-in modules that simplify complex tasks.
+- `datetime.strptime()` checks both the date format and whether the date actually exists.
+- Validation becomes more reliable when using standard library modules instead of writing custom logic.

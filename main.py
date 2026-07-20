@@ -131,3 +131,22 @@ print("Balance   :N",balance)
 print("==============================")
 print("Thanks for your patronage!")
 print("==============================")
+
+
+with open("orders.txt", "a") as file:
+  file.write("==============================\n")
+  file.write("CLIENT RECEIPT\n")
+  file.write("==============================\n")
+  file.write(f"Customer Name : {customer_name}\n")
+  file.write(f"Phone Number  : {phone_number}\n")
+  file.write(f"Garment Type  : {garment_type}\n")
+  file.write(f"Quantity      : {quantity}\n")
+  file.write(f"Delivery Date : {delivery_date}\n")
+  file.write(f"Price         : ₦{price}\n")
+  file.write(f"Deposit       : ₦{deposit}\n")
+  file.write(f"Balance       : ₦{balance}\n")
+  file.write("==============================\n")
+  file.write("Thanks for your patronage!\n")
+  file.write("==≠≠==========================\n\n")
+
+print("Order saved successfully")

@@ -96,3 +96,12 @@ The application validates garment type by ensuring that:
 - The input contains at least 3 letters.
 - Extra spaces are removed automatically.
 - Each word is automatically capitalized.
+
+### Delivery Date Validation
+
+The application validates the delivery date by ensuring that:
+
+- The field is not empty.
+- The date is entered in `DD/MM/YYYY` format.
+- Invalid dates are rejected.
+- The user is prompted again until a valid date is entered.
