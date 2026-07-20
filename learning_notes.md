@@ -327,3 +327,32 @@ This made the program much more reliable and user-friendly.
 - Python provides built-in modules that simplify complex tasks.
 - `datetime.strptime()` checks both the date format and whether the date actually exists.
 - Validation becomes more reliable when using standard library modules instead of writing custom logic.
+
+## File Handling - Saving Orders
+
+### Opening a File
+
+```python
+with open("orders.txt", "a") as file:
+```
+
+- `with` automatically closes the file after use.
+- `"orders.txt"` is the file name.
+- `"a"` means **append mode**, which adds new data without deleting existing records.
+
+### Writing to a File
+
+```python
+file.write(f"Customer Name : {customer_name}\n")
+```
+
+- `file.write()` writes text to the file.
+- `f""` (formatted string) inserts variable values into the text.
+- `\n` creates a new line.
+
+### Key Learning
+
+- Save program output permanently.
+- Append new records instead of overwriting existing ones.
+- Store formatted customer receipts in a text file.
+- Use file handling to keep records after the program closes.

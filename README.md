@@ -105,3 +105,27 @@ The application validates the delivery date by ensuring that:
 - The date is entered in `DD/MM/YYYY` format.
 - Invalid dates are rejected.
 - The user is prompted again until a valid date is entered.
+
+## New Feature: Save Orders to File
+
+The application now automatically saves every completed customer order to a text file (`orders.txt`).
+
+### Implementation
+
+```python
+with open("orders.txt", "a") as file:
+    file.write(...)
+    ```
+
+    ### What is Saved
+
+    - Customer Name
+    - Phone Number
+    - Garment Type
+    - Quantity
+    - Delivery Date
+    - Price
+    - Deposit
+    - Balance
+
+    Each new order is appended to the end of the file, preserving all previous records.
