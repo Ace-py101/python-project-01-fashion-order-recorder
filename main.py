@@ -1,4 +1,32 @@
 from datetime import datetime
+
+def display_menu():
+  print("=" * 35)
+  print("FASHION HOUSE MANAGER")
+  print("=" * 35)
+  print("1. Orders")
+  print("2. Measurements")
+  print("3. Styles")
+  print("4. Exit")
+
+  choice = input("Select option:")
+
+  if choice == "1":
+    create_order()
+
+  elif choice == "2":
+    print("Measurements fearure coming soon")
+
+  elif choice == "3":
+    print("Styles feature coming soon")
+
+  elif choice == "4":
+    print("Goodbye")
+
+  else:
+    print("Invalid Option")
+     
+  
 # ==========================
 # Fashion House Order Recorder
 # Project 1
@@ -8,8 +36,9 @@ from datetime import datetime
 # Collect customer information
 
 print("==============================")
-print("      CLIENT RECEIPT")
+print("      START OF ORDER")
 print("==============================")
+def create_order():
 while True:
   customer_name = input("Enter Customer name: ").strip()
 
@@ -129,13 +158,14 @@ print("Deposit   :N",deposit)
 balance = price - deposit
 print("Balance   :N",balance)
 print("==============================")
+print("       END OF ORDER")
 print("Thanks for your patronage!")
 print("==============================")
 
 
 with open("orders.txt", "a") as file:
   file.write("==============================\n")
-  file.write("CLIENT RECEIPT\n")
+  file.write("ORDER START\n")
   file.write("==============================\n")
   file.write(f"Customer Name : {customer_name}\n")
   file.write(f"Phone Number  : {phone_number}\n")
@@ -146,7 +176,13 @@ with open("orders.txt", "a") as file:
   file.write(f"Deposit       : ₦{deposit}\n")
   file.write(f"Balance       : ₦{balance}\n")
   file.write("==============================\n")
+  file.write("ORDER END\n")
   file.write("Thanks for your patronage!\n")
-  file.write("==≠≠==========================\n\n")
+  file.write("==============================\n\n")
 
 print("Order saved successfully")
+
+def main():
+  display_menu()
+
+main()
