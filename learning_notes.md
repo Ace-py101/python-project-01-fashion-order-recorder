@@ -356,3 +356,61 @@ file.write(f"Customer Name : {customer_name}\n")
 - Append new records instead of overwriting existing ones.
 - Store formatted customer receipts in a text file.
 - Use file handling to keep records after the program closes.
+
+# Learning Notes
+
+## Project Refactoring
+
+Today I refactored my Fashion House Order Recorder project from a single long procedural script into a cleaner function-based application.
+
+## What I Learned
+
+### Functions
+
+- How to create reusable functions using `def`.
+- Functions should have one responsibility and perform a specific task.
+- How to pass data into functions using parameters.
+- How functions return values using `return`.
+- The difference between parameters and arguments.
+
+### Variables, Parameters and Constants
+
+- Variables store data that can change during program execution.
+- Parameters are variables created inside a function definition to receive data.
+- Arguments are the actual values passed into a function when calling it.
+- Constants are values that should remain unchanged throughout the program.
+
+### Input Validation
+
+I separated input validation into individual functions:
+
+- `get_customer_name()`
+- `get_phone_number()`
+- `get_garment_type()`
+- `get_quantity()`
+- `get_delivery_date()`
+- `get_price()`
+- `get_deposit()`
+
+Each function:
+1. Collects user input.
+2. Checks if the input is valid.
+3. Returns the correct value.
+
+### Exception Handling
+
+I learned that `try/except` is used to handle errors that may occur while a program is running.
+
+Examples:
+
+- `ValueError` when converting invalid input to integers.
+- `FileNotFoundError` when trying to open a missing file.
+- `KeyError` when accessing a missing dictionary key.
+
+I also learned that not every validation requires `try/except`. Conditions that can be checked directly should use `if` statements.
+
+Example:
+
+```python
+if customer_name == "":
+    print("Customer name cannot be empty.")

@@ -129,3 +129,34 @@ with open("orders.txt", "a") as file:
     - Balance
 
     Each new order is appended to the end of the file, preserving all previous records.
+
+
+## Project Description
+
+Fashion House Order Recorder is a Python-based application designed to help record customer garment orders.
+
+The project demonstrates practical programming concepts including input validation, file handling, exception handling and modular programming.
+
+The application is being developed with future expansion in mind, including conversion into a web-based management system.
+
+---
+
+## Features
+
+- Interactive menu-driven interface.
+- Create new customer orders.
+- Validate customer names.
+- Validate phone numbers.
+- Validate garment types.
+- Validate order quantity.
+- Validate delivery dates.
+- Validate price and deposit values.
+- Automatically calculate customer balance.
+- Display order receipt.
+- Save completed orders to a text file.
+
+---
+
+## Current Program Structure
+
+The project was refactored into reusable functions:
