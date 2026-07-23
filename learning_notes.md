@@ -678,3 +678,366 @@ before building the Flask web application.
 - Store orders in database
 - Replace text-file CRUD with database CRUD
 - Build Flask Web Application
+
+Learning Notes - Fashion House Manager
+
+Project Overview
+
+Fashion House Manager is a Python application created to manage customer orders in a fashion business environment.
+
+The project follows a practical development workflow:
+
+Problem Understanding
+        ↓
+Pseudocode
+        ↓
+Python Implementation
+        ↓
+Testing
+        ↓
+Refactoring
+        ↓
+Improvement
+
+---
+
+Initial Development
+
+The first version was created as a single Python file.
+
+It contained:
+
+- Menu system
+- User inputs
+- Validation
+- Receipt display
+- File saving
+
+This worked, but as features increased, the code became difficult to maintain.
+
+---
+
+Modular Programming
+
+The project was refactored into separate modules.
+
+Concept:
+
+Each file should have one responsibility.
+
+Example:
+
+main.py
+    Controls program flow
+
+orders.py
+    Handles order operations
+
+validation.py
+    Checks input
+
+receipt.py
+    Displays receipts
+
+storage.py
+    Handles saving and loading data
+
+Benefits:
+
+- Easier debugging
+- Cleaner code
+- Better scalability
+- Easier future development
+
+---
+
+Input Validation
+
+Validation prevents incorrect information from entering the system.
+
+Examples:
+
+Customer Name
+
+Rules:
+
+- Cannot be empty
+- Must contain letters only
+- Minimum character length
+- Automatically formatted
+
+---
+
+Phone Number
+
+Rules:
+
+- Numbers only
+- Exactly 11 digits
+- Must start with 0
+
+---
+
+Quantity
+
+Rules:
+
+- Must be an integer
+- Cannot be less than 1
+
+---
+
+Date
+
+Uses Python datetime:
+
+from datetime import datetime
+
+The program checks that dates follow:
+
+DD/MM/YYYY
+
+format.
+
+---
+
+JSON Storage Migration
+
+Previous Method
+
+The first storage system used:
+
+orders.txt
+
+Text files are simple but limited.
+
+Problems:
+
+- Difficult searching
+- Difficult updating
+- Difficult deleting
+- Data structure is unclear
+
+---
+
+New Method
+
+The project migrated to:
+
+orders.json
+
+JSON stores information in structured form.
+
+Example:
+
+{
+    "customer_name": "Ade",
+    "price": 50000
+}
+
+---
+
+JSON Concepts Learned
+
+Serialization
+
+Converting Python objects into JSON format.
+
+Example:
+
+Python dictionary:
+
+order = {
+    "name": "Ade"
+}
+
+Converted to JSON using:
+
+json.dump()
+
+---
+
+Deserialization
+
+Reading JSON and converting it back into Python objects.
+
+Using:
+
+json.load()
+
+---
+
+CRUD Concepts
+
+CRUD is a common pattern in software applications.
+
+Create
+
+Adding new data.
+
+Example:
+
+save_order(order)
+
+---
+
+Read
+
+Retrieving stored information.
+
+Example:
+
+load_orders()
+
+---
+
+Update
+
+Changing existing information.
+
+Example:
+
+order["price"] = 80000
+
+---
+
+Delete
+
+Removing information by creating a new filtered list.
+
+Example concept:
+
+Old list
+    ↓
+Remove selected item
+    ↓
+Save new list
+
+---
+
+Python Concepts Practiced
+
+Functions
+
+Functions group reusable instructions.
+
+Example:
+
+def create_order():
+
+---
+
+Dictionaries
+
+Used to represent individual orders.
+
+Example:
+
+{
+"customer_name": "Ade",
+"quantity": 2
+}
+
+---
+
+Lists
+
+Used to store multiple orders.
+
+Example:
+
+[
+order1,
+order2,
+order3
+]
+
+---
+
+Loops
+
+Used to process multiple records.
+
+Example:
+
+for order in orders:
+
+---
+
+Exception Handling
+
+Used to prevent program crashes.
+
+Example:
+
+try:
+    value = int(input())
+
+except ValueError:
+    print("Invalid input")
+
+---
+
+Current Architecture
+
+User
+ |
+ ↓
+main.py
+ |
+ ↓
+orders.py
+ |
+ ├── validation.py
+ ├── receipt.py
+ └── storage.py
+          |
+          ↓
+     orders.json
+
+---
+
+Lessons Learned
+
+1. Start Simple, Improve Gradually
+
+The first version does not need to be perfect.
+
+A working solution can be improved through refactoring.
+
+---
+
+2. Organization Matters
+
+Separating code into modules makes large programs manageable.
+
+---
+
+3. Data Structure Matters
+
+Choosing the correct storage format determines how easily information can be processed.
+
+---
+
+4. Real Projects Require Iteration
+
+Development is a cycle:
+
+Build
+Test
+Find Problems
+Improve
+Repeat
+
+---
+
+Future Learning Goals
+
+Next planned improvements:
+
+- Add unique order IDs
+- Create customer records
+- Add measurement management
+- Introduce SQLite database
+- Build web interface
+- Connect frontend and backend concepts

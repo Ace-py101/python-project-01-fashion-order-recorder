@@ -268,3 +268,277 @@ learning_notes.md
 - Edit individual fields
 - Better user interface
 - Authentication/Login
+
+Fashion House Manager
+
+A Python-based order management application designed for a fashion house workflow.
+
+The project started as a simple terminal program for recording customer orders and has evolved into a modular application with validation, structured storage, and CRUD operations.
+
+---
+
+Features
+
+Order Management
+
+The application currently supports:
+
+- Create new customer orders
+- View all saved orders
+- Search for specific orders
+- Edit existing orders
+- Delete orders
+
+---
+
+Current Project Structure
+
+python-project-01-fashion-order-recorder/
+
+├── main.py
+├── orders.py
+├── validation.py
+├── receipt.py
+├── storage.py
+├── orders.json
+├── README.md
+├── learning_notes.md
+└── pseudocode.txt
+
+---
+
+File Responsibilities
+
+main.py
+
+Responsible for:
+
+- Starting the application
+- Displaying the main menu
+- Controlling navigation between features
+
+---
+
+orders.py
+
+Contains the main order business logic:
+
+- Creating orders
+- Searching orders
+- Editing orders
+- Deleting orders
+
+This file communicates with validation and storage modules.
+
+---
+
+validation.py
+
+Responsible for checking user input.
+
+Current validations include:
+
+- Customer name validation
+- Phone number validation
+- Garment type validation
+- Quantity validation
+- Delivery date validation
+- Price validation
+- Deposit validation
+
+The purpose is to prevent incorrect data from entering the system.
+
+---
+
+receipt.py
+
+Handles customer receipt display.
+
+It formats completed orders into a readable terminal receipt.
+
+---
+
+storage.py
+
+Responsible for data persistence.
+
+Current storage method:
+
+- JSON file storage
+
+Functions include:
+
+- Loading saved orders
+- Saving new orders
+- Updating stored orders
+
+---
+
+Data Storage
+
+The project originally used a text file:
+
+orders.txt
+
+Example:
+
+Customer Name : Ace
+Phone Number  : 07014287325
+Price         : ₦15000
+
+This worked for displaying information but was difficult to search, update, and manipulate.
+
+The project was later migrated to JSON storage:
+
+orders.json
+
+Example:
+
+[
+    {
+        "customer_name": "Ade",
+        "phone_number": "07073770790",
+        "garment_type": "Shirts",
+        "quantity": 2,
+        "delivery_date": "10/10/2029",
+        "price": 50000,
+        "deposit": 40000,
+        "balance": 10000
+    }
+]
+
+Advantages of JSON storage:
+
+- Structured data
+- Easier searching
+- Easier editing
+- Easier deletion
+- Easier migration to databases later
+
+---
+
+CRUD Operations
+
+The application now follows the CRUD pattern.
+
+Create
+
+Creates new orders and saves them into "orders.json".
+
+Function:
+
+create_order()
+
+---
+
+Read
+
+Retrieves saved orders.
+
+Functions:
+
+view_orders()
+search_order()
+
+---
+
+Update
+
+Changes existing order information.
+
+Function:
+
+edit_order()
+
+---
+
+Delete
+
+Removes existing orders.
+
+Function:
+
+delete_order()
+
+---
+
+Technologies Used
+
+- Python
+- JSON
+- Git
+- GitHub
+- Termux Linux environment
+
+---
+
+Development Journey
+
+Stage 1: Basic Python Program
+
+Started with:
+
+- Input/output
+- Variables
+- Conditions
+- Loops
+- Functions
+
+---
+
+Stage 2: Input Validation
+
+Added protection against invalid information:
+
+Examples:
+
+- Empty names
+- Invalid phone numbers
+- Wrong dates
+- Negative prices
+
+---
+
+Stage 3: Modular Refactoring
+
+The original single Python file was divided into multiple modules.
+
+Benefits:
+
+- Cleaner code
+- Easier maintenance
+- Better organization
+- Separation of responsibilities
+
+---
+
+Stage 4: JSON Migration
+
+Moved from text storage to structured JSON storage.
+
+This introduced concepts used in backend development:
+
+- Serialization
+- Deserialization
+- Data persistence
+- Structured records
+
+---
+
+Future Improvements
+
+Planned features:
+
+- Add unique order IDs
+- Customer management module
+- Measurements management
+- Style catalogue
+- Reports and analytics
+- SQLite database integration
+- Web application interface
+
+---
+
+Purpose
+
+This project is a practical learning project focused on applying Python programming concepts to solve a real fashion business problem.
