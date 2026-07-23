@@ -414,3 +414,267 @@ Example:
 ```python
 if customer_name == "":
     print("Customer name cannot be empty.")
+
+# Learning Notes
+
+## Refactoring
+
+Refactored the application into small reusable functions instead of writing everything inside one large script.
+
+Examples:
+
+- display_menu()
+- order_menu()
+- create_order()
+- display_receipt()
+- save_order()
+
+Benefits:
+
+- Cleaner code
+- Easier debugging
+- Easier maintenance
+- Better preparation for Flask
+
+---
+
+## Modular Programming
+
+Instead of repeating code, each task should have its own function.
+
+One function should perform one responsibility.
+
+Example:
+
+create_order() collects data.
+
+display_receipt() prints the receipt.
+
+save_order() saves data to the file.
+
+---
+
+## Nested Menu System
+
+Implemented a two-level menu.
+
+Main Menu
+
+```
+Orders
+Measurements
+Styles
+Exit
+```
+
+Orders Menu
+
+```
+Create Order
+View Orders
+Search Order
+Edit Order
+Delete Order
+Back
+```
+
+This structure makes the application easier to expand.
+
+---
+
+## CRUD Operations
+
+Learned the four basic operations used in most software systems.
+
+Create
+
+Create new order.
+
+Read
+
+View Orders
+
+Search Orders
+
+Update
+
+Edit Order (Basic)
+
+Delete
+
+Delete Order (Basic)
+
+These operations form the foundation of management systems.
+
+---
+
+## View Orders
+
+Learned how to:
+
+- Open a file
+- Read file contents
+- Display saved records
+- Handle FileNotFoundError
+
+---
+
+## Search Order
+
+Learned:
+
+- String searching
+- .lower()
+- .strip()
+- Case-insensitive searching
+
+Example:
+
+```
+"Ace".lower()
+```
+
+Returns
+
+```
+ace
+```
+
+---
+
+## Edit Order
+
+Built the first version of editing records.
+
+Learned:
+
+- Read entire file
+- Split records
+- Rewrite file
+- Replace text
+- Update data
+
+Current implementation works but will be redesigned after migrating to SQLite.
+
+---
+
+## Delete Order
+
+Built a basic delete feature.
+
+Concept learned:
+
+Instead of deleting directly from the file,
+
+Read all records
+
+↓
+
+Keep only records that should remain
+
+↓
+
+Rewrite the file
+
+This introduced the concept of rebuilding a file after removing unwanted records.
+
+---
+
+## File Modes
+
+Learned the purpose of different file modes.
+
+```
+"r"  Read
+
+"w"  Write (overwrite)
+
+"a"  Append
+```
+
+---
+
+## Lists
+
+Used lists to temporarily store records while editing and deleting.
+
+Methods learned:
+
+- append()
+
+Functions learned:
+
+- split()
+- join()
+
+---
+
+## String Methods
+
+Practiced:
+
+- replace()
+- strip()
+- lower()
+- startswith()
+- isalpha()
+- isdigit()
+
+---
+
+## Loops
+
+Used:
+
+- while loops
+- for loops
+
+while
+
+Used for repeated user input until valid.
+
+for
+
+Used for processing every saved order.
+
+---
+
+## Exception Handling
+
+Used try/except to handle:
+
+- Invalid numeric input
+- Missing files
+
+Examples:
+
+- ValueError
+- FileNotFoundError
+
+---
+
+## Software Design Lesson
+
+Text files are suitable for learning file handling but become difficult for searching, editing and deleting records.
+
+SQLite provides a better solution because data is stored in structured tables instead of plain text.
+
+This project will migrate from:
+
+orders.txt
+
+to
+
+orders.db
+
+before building the Flask web application.
+
+---
+
+## Next Milestone
+
+- SQLite Database
+- Connect Python to SQLite
+- Store orders in database
+- Replace text-file CRUD with database CRUD
+- Build Flask Web Application

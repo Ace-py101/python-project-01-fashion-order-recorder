@@ -6,7 +6,7 @@ def display_menu():
     print("=" * 35)
     print("FASHION HOUSE MANAGER")
     print("=" * 35)
-    print("1. Create Order")
+    print("1. Orders")
     print("2. Measurements")
     print("3. Styles")
     print("4. Exit")
@@ -14,7 +14,7 @@ def display_menu():
     choice = input("Select option: ")
 
     if choice == "1":
-      create_order()
+      order_menu()
 
     elif choice == "2":
       print("Measurements feature coming soon")
@@ -28,6 +28,41 @@ def display_menu():
 
     else:
       print("Invalid option, please try again \n")
+
+def order_menu():
+    while True:
+        print("=" * 30)
+        print("          ORDERS")
+        print("=" * 30)
+        print("1. Create Order")
+        print("2. View Orders")
+        print("3. Search Order")
+        print("4. Edit Order")
+        print("5. Delete Order")
+        print("6. Back")
+
+        choice = input("Select option: ")
+
+        if choice == "1":
+            create_order()
+
+        elif choice == "2":
+            view_orders()
+
+        elif choice == "3":
+            search_order()
+
+        elif choice == "4":
+            edit_order()
+
+        elif choice == "5":
+            delete_order()
+
+        elif choice == "6":
+            break
+
+        else:
+            print("Invalid option")
       
 def get_customer_name():
   while True:
@@ -233,6 +268,177 @@ def save_order(
     file.write("Thanks for your patronage!\n")
     file.write("==============================\n\n")
 
+def view_orders():
+    print("=" * 30)
+    print("        ALL ORDERS")
+    print("=" * 30)
+
+    try:
+        with open("orders.txt", "r") as file:
+            orders = file.read()
+
+            if orders == "":
+                print("No orders found.")
+
+            else:
+                print(orders)
+
+    except FileNotFoundError:
+        print("No order record found.")
+
+    print("=" * 30)
+
+def search_order():
+    print("=" * 30)
+    print("       SEARCH ORDER")
+    print("=" * 30)
+
+    search_name = input("Enter customer name: ").strip()
+
+    try:
+        with open("orders.txt", "r") as file:
+            orders = file.read()
+
+            if search_name.lower() in orders.lower():
+                print("Order found!")
+                print("=" * 30)
+
+                print(orders)
+
+            else:
+                print("No order found for this customer.")
+
+    except FileNotFoundError:
+        print("No order record found.")
+
+    print("=" * 30)
+
+def edit_order():
+    print("=" * 30)
+    print("        EDIT ORDER")
+    print("=" * 30)
+
+    search_name = input("Enter customer name: ").strip()
+
+    try:
+        with open("orders.txt", "r") as file:
+            orders = file.read()
+
+        order_list = orders.split("==============================\n\n")
+
+        updated_orders = []
+
+        found = False
+
+        for order in order_list:
+
+            if search_name.lower() in order.lower():
+
+                found = True
+
+                print("Order found.")
+                print(order)
+
+                new_garment = input("Enter new garment type: ")
+                new_quantity = input("Enter new quantity: ")
+                new_price = input("Enter new price: ")
+                new_deposit = input("Enter new deposit: ")
+
+                balance = int(new_price) - int(new_deposit)
+
+                order = order.replace(
+                    order,
+                    f"""==============================
+ORDER START
+Customer Name : {search_name}
+Garment Type  : {new_garment}
+Quantity      : {new_quantity}
+Price         : ₦{new_price}
+Deposit       : ₦{new_deposit}
+Balance       : ₦{balance}
+ORDER END
+"""
+                )
+
+            updated_orders.append(order)
+
+        if found:
+            with open("orders.txt", "w") as file:
+                file.write("==============================\n\n".join(updated_orders))
+
+            print("Order updated successfully.")
+
+        else:
+            print("Order not found.")
+
+    except FileNotFoundError:
+        print("No order record found.")
+
+    print("=" * 30)
+    
+def delete_order():
+    print("=" * 30)
+    print("       DELETE ORDER")
+    print("=" * 30)
+
+    while True:
+        customer_name = input("Enter customer name: ").strip()
+
+        try:
+            with open("orders.txt", "r") as file:
+                orders = file.read()
+
+            order_list = orders.split("==============================\n\n")
+
+            remaining_orders = []
+            found = False
+
+            for order in order_list:
+
+                if customer_name.lower() in order.lower():
+
+                    found = True
+
+                    print("\nOrder Found:\n")
+                    print(order)
+
+                    confirm = input(
+                        "Delete this order? (Y/N): "
+                    ).strip().lower()
+
+                    if confirm == "y":
+                        print("Order deleted successfully.")
+                        continue
+
+                    else:
+                        remaining_orders.append(order)
+                        print("Deletion cancelled.")
+                        continue
+
+                remaining_orders.append(order)
+
+            if not found:
+                print("Order not found.")
+                retry = input(
+                    "Try again? (Y/N): "
+                ).strip().lower()
+
+                if retry == "y":
+                    continue
+                else:
+                    return
+
+            with open("orders.txt", "w") as file:
+                file.write(
+                    "==============================\n\n".join(remaining_orders)
+                )
+
+            return
+
+        except FileNotFoundError:
+            print("No order record found.")
+            return
+              
 def main():
   display_menu()
 
