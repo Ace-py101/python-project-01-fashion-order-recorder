@@ -13,7 +13,8 @@ from receipt import display_receipt
 from storage import (
     save_order,
     view_orders,
-    load_orders
+    load_orders,
+    save_all_orders
 )
 
 def create_order():
@@ -60,19 +61,36 @@ def search_order():
     print("       SEARCH ORDER")
     print("=" * 30)
 
-    search_name = input("Enter customer name: ")
+    search_name = input("Enter customer name: ").strip()
 
-    orders = read_orders()
+    orders = load_orders()
 
-    if search_name.lower() in orders.lower():
-        print("Order found!")
-        print("=" * 30)
-        print(orders)
+    found = False
 
-    else:
-        print("No order found for this customer.")
+    for order in orders:
 
-    print("=" * 30)
+        if order["customer_name"].lower() == search_name.lower():
+
+            found = True
+
+            print("\nOrder found!")
+            print("=" * 30)
+
+            print("Customer Name :", order["customer_name"])
+            print("Phone Number  :", order["phone_number"])
+            print("Garment Type  :", order["garment_type"])
+            print("Quantity      :", order["quantity"])
+            print("Delivery Date :", order["delivery_date"])
+            print("Price         : ₦", order["price"])
+            print("Deposit       : ₦", order["deposit"])
+            print("Balance       : ₦", order["balance"])
+
+            print("=" * 30)
+
+            break
+
+    if not found:
+        print("Order not found.")
 
 
 def edit_order():
@@ -83,63 +101,50 @@ def edit_order():
 
     search_name = input("Enter customer name: ").strip()
 
-    orders = read_orders()
+    orders = load_orders()
 
-    order_list = orders.split("==============================\nORDER START\n")
-
-    updated_orders = []
     found = False
 
-    for order in order_list:
+    for order in orders:
 
-        if search_name.lower() in order.lower():
+        if order["customer_name"].lower() == search_name.lower():
 
             found = True
 
-            print("\nExisting Order:")
-            print(order)
+            print("\nCurrent Order:")
+            print("=" * 30)
+
+            print("Customer Name :", order["customer_name"])
+            print("Phone Number  :", order["phone_number"])
+            print("Garment Type  :", order["garment_type"])
+            print("Quantity      :", order["quantity"])
+            print("Delivery Date :", order["delivery_date"])
+            print("Price         : ₦", order["price"])
+            print("Deposit       : ₦", order["deposit"])
+            print("Balance       : ₦", order["balance"])
+
+            print("=" * 30)
 
             print("\nEnter new details:")
 
-            new_garment = get_garment_type()
-            new_quantity = get_quantity()
-            new_price = get_price()
-            new_deposit = get_deposit(new_price)
+            order["garment_type"] = get_garment_type()
+            order["quantity"] = get_quantity()
+            order["delivery_date"] = get_delivery_date()
+            order["price"] = get_price()
+            order["deposit"] = get_deposit(order["price"])
 
-            balance = new_price - new_deposit
-
-            updated_order = f"""
-ORDER START
-==============================
-Customer Name : {search_name.title()}
-Garment Type  : {new_garment}
-Quantity      : {new_quantity}
-Price         : ₦{new_price}
-Deposit       : ₦{new_deposit}
-Balance       : ₦{balance}
-==============================
-ORDER END
-Thanks for your patronage!
-==============================
-"""
-
-            updated_orders.append(updated_order)
-
-        else:
-            updated_orders.append(order)
-
-
-    if found:
-
-        with open("orders.txt", "w") as file:
-            file.write(
-                "==============================\nORDER START\n"
-                + "\n".join(updated_orders)
+            order["balance"] = (
+                order["price"] - order["deposit"]
             )
 
-        print("Order updated successfully.")
+            save_all_orders(orders)
 
-    else:
+            print("Order updated successfully.")
+
+            break
+
+
+    if not found:
         print("Order not found.")
 
 
@@ -149,23 +154,30 @@ def delete_order():
     print("       DELETE ORDER")
     print("=" * 30)
 
-    customer_name = input("Enter customer name: ").strip()
+    search_name = input("Enter customer name: ").strip()
 
-    orders = read_orders()
+    orders = load_orders()
 
-    order_list = orders.split("==============================\nORDER START\n")
-
-    remaining_orders = []
     found = False
 
-    for order in order_list:
+    updated_orders = []
 
-        if customer_name.lower() in order.lower():
+    for order in orders:
+
+        if order["customer_name"].lower() == search_name.lower():
 
             found = True
 
-            print("\nOrder Found:")
-            print(order)
+            print("\nOrder found:")
+            print("=" * 30)
+
+            print("Customer Name :", order["customer_name"])
+            print("Phone Number  :", order["phone_number"])
+            print("Garment Type  :", order["garment_type"])
+            print("Quantity      :", order["quantity"])
+            print("Price         : ₦", order["price"])
+
+            print("=" * 30)
 
             confirm = input(
                 "Delete this order? (Y/N): "
@@ -176,10 +188,10 @@ def delete_order():
                 continue
 
             else:
-                remaining_orders.append(order)
+                updated_orders.append(order)
 
         else:
-            remaining_orders.append(order)
+            updated_orders.append(order)
 
 
     if not found:
@@ -187,8 +199,4 @@ def delete_order():
         return
 
 
-    with open("orders.txt", "w") as file:
-        file.write(
-            "==============================\nORDER START\n"
-            + "\n".join(remaining_orders)
-        )
+    save_all_orders(updated_orders)

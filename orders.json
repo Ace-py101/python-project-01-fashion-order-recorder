@@ -2,11 +2,11 @@
     {
         "customer_name": "Ade",
         "phone_number": "07073770790",
-        "garment_type": "Shirts",
-        "quantity": 2,
-        "delivery_date": "10/10/2029",
-        "price": 50000,
-        "deposit": 40000,
-        "balance": 10000
+        "garment_type": "Senator",
+        "quantity": 1,
+        "delivery_date": "10/12/2026",
+        "price": 30000,
+        "deposit": 25000,
+        "balance": 5000
     }
 ]

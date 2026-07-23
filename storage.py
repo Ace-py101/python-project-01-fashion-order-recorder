@@ -53,3 +53,12 @@ def view_orders():
             print("Balance       : ₦", order["balance"])
 
     print("=" * 30)
+
+def save_all_orders(orders):
+
+    with open(FILE_NAME, "w") as file:
+        json.dump(
+            orders,
+            file,
+            indent=4
+        )

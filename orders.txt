@@ -1,0 +1,15 @@
+==============================
+ORDER START
+==============================
+Customer Name : Ace
+Phone Number  : 07014287325
+Garment Type  : Shorts
+Quantity      : 10
+Delivery Date : 10/10/2026
+Price         : ₦15000
+Deposit       : ₦10000
+Balance       : ₦5000
+==============================
+ORDER END
+Thanks for your patronage!
+==============================
