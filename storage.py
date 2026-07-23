@@ -1,53 +1,55 @@
-def save_order(
-    customer_name,
-    phone_number,
-    garment_type,
-    quantity,
-    delivery_date,
-    price,
-    deposit,
-    balance,
-):
-    with open("orders.txt", "a") as file:
-        file.write("=" * 30 + "\n")
-        file.write("ORDER START\n")
-        file.write("=" * 30 + "\n")
-
-        file.write(f"Customer Name : {customer_name}\n")
-        file.write(f"Phone Number  : {phone_number}\n")
-        file.write(f"Garment Type  : {garment_type}\n")
-        file.write(f"Quantity      : {quantity}\n")
-        file.write(f"Delivery Date : {delivery_date}\n")
-        file.write(f"Price         : ₦{price}\n")
-        file.write(f"Deposit       : ₦{deposit}\n")
-        file.write(f"Balance       : ₦{balance}\n")
-
-        file.write("=" * 30 + "\n")
-        file.write("ORDER END\n")
-        file.write("Thanks for your patronage!\n")
-        file.write("=" * 30 + "\n")
+import json
 
 
-def read_orders():
+FILE_NAME = "orders.json"
+
+
+def load_orders():
     try:
-        with open("orders.txt", "r") as file:
-            return file.read()
+        with open(FILE_NAME, "r") as file:
+            return json.load(file)
 
-    except FileNotFoundError:
-        return ""
+    except (FileNotFoundError, json.JSONDecodeError):
+        return []
+
+
+def save_order(order):
+
+    orders = load_orders()
+
+    orders.append(order)
+
+    with open(FILE_NAME, "w") as file:
+        json.dump(
+            orders,
+            file,
+            indent=4
+        )
 
 
 def view_orders():
+
     print("=" * 30)
     print("        ALL ORDERS")
     print("=" * 30)
 
-    orders = read_orders()
+    orders = load_orders()
 
-    if orders == "":
+    if not orders:
         print("No orders found.")
 
     else:
-        print(orders)
+        for order in orders:
+
+            print("-" * 30)
+
+            print("Customer Name :", order["customer_name"])
+            print("Phone Number  :", order["phone_number"])
+            print("Garment Type  :", order["garment_type"])
+            print("Quantity      :", order["quantity"])
+            print("Delivery Date :", order["delivery_date"])
+            print("Price         : ₦", order["price"])
+            print("Deposit       : ₦", order["deposit"])
+            print("Balance       : ₦", order["balance"])
 
     print("=" * 30)
