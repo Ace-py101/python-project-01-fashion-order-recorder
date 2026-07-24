@@ -542,3 +542,125 @@ Planned features:
 Purpose
 
 This project is a practical learning project focused on applying Python programming concepts to solve a real fashion business problem.
+
+---
+
+# Version 2.0 Update
+
+This version introduces major improvements to the project architecture and data model.
+
+## New Features
+
+### Unique Order IDs
+
+Every order now receives a unique identifier.
+
+Example:
+
+```json
+{
+    "order_id": 1001,
+    "customer_name": "Ade",
+    "phone_number": "07073770790"
+}
+```
+
+Using Order IDs eliminates ambiguity when multiple customers have the same name and provides a reliable way to search, edit, and delete records.
+
+---
+
+### Improved CRUD Operations
+
+All order operations now use **Order ID** instead of customer names.
+
+Supported operations:
+
+- Create Order
+- View Orders
+- Search Order by ID
+- Edit Order by ID
+- Delete Order by ID
+
+This follows the same approach used in professional database-driven applications.
+
+---
+
+### Improved Data Model
+
+Each order now contains:
+
+- Order ID
+- Customer Name
+- Phone Number
+- Garment Type
+- Quantity
+- Delivery Date
+- Price
+- Deposit
+- Balance
+
+This provides a structured and scalable record format.
+
+---
+
+### Safer Data Handling
+
+The application now:
+
+- Generates unique Order IDs automatically.
+- Preserves existing orders during updates.
+- Removes only the selected order during deletion.
+- Stores data in structured JSON format.
+
+---
+
+# Current Architecture
+
+```text
+User
+ │
+ ▼
+main.py
+ │
+ ▼
+orders.py
+ │
+ ├── validation.py
+ ├── receipt.py
+ └── storage.py
+          │
+          ▼
+     orders.json
+```
+
+---
+
+# Project Status
+
+Completed features:
+
+- Main Menu
+- Orders Menu
+- Modular Project Structure
+- Input Validation
+- Receipt Generation
+- JSON Storage
+- Unique Order IDs
+- Full CRUD Operations
+
+Current storage technology:
+
+- JSON
+
+Next planned milestone:
+
+- Flask Web Interface (MVP)
+
+Future milestones:
+
+- SQLite integration
+- Customer module
+- Measurements module
+- Styles module
+- Reports dashboard
+- Production deployment

@@ -37,22 +37,21 @@ def view_orders():
 
     if not orders:
         print("No orders found.")
+        return
 
-    else:
-        for order in orders:
+    for order in orders:
 
-            print("-" * 30)
-
-            print("Customer Name :", order["customer_name"])
-            print("Phone Number  :", order["phone_number"])
-            print("Garment Type  :", order["garment_type"])
-            print("Quantity      :", order["quantity"])
-            print("Delivery Date :", order["delivery_date"])
-            print("Price         : ₦", order["price"])
-            print("Deposit       : ₦", order["deposit"])
-            print("Balance       : ₦", order["balance"])
-
-    print("=" * 30)
+        print("=" * 30)
+        print("Order ID      :", order["order_id"])
+        print("Customer Name :", order["customer_name"])
+        print("Phone Number  :", order["phone_number"])
+        print("Garment Type  :", order["garment_type"])
+        print("Quantity      :", order["quantity"])
+        print("Delivery Date :", order["delivery_date"])
+        print("Price         : ₦", order["price"])
+        print("Deposit       : ₦", order["deposit"])
+        print("Balance       : ₦", order["balance"])
+        print("=" * 30)
 
 def save_all_orders(orders):
 
@@ -62,3 +61,21 @@ def save_all_orders(orders):
             file,
             indent=4
         )
+
+def generate_order_id():
+
+    orders = load_orders()
+
+    if not orders:
+        return 1001
+
+    existing_ids = []
+
+    for order in orders:
+        if "order_id" in order:
+            existing_ids.append(order["order_id"])
+
+    if not existing_ids:
+        return 1001
+
+    return max(existing_ids) + 1

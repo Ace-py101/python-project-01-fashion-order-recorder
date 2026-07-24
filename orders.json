@@ -1,5 +1,6 @@
 [
     {
+        "order_id": 1001,
         "customer_name": "Ade",
         "phone_number": "07073770790",
         "garment_type": "Senator",
@@ -8,5 +9,27 @@
         "price": 30000,
         "deposit": 25000,
         "balance": 5000
+    },
+    {
+        "order_id": 1002,
+        "customer_name": "Acey",
+        "phone_number": "09076789875",
+        "garment_type": "Tops",
+        "quantity": 5,
+        "delivery_date": "6/6/8909",
+        "price": 70000,
+        "deposit": 5,
+        "balance": 69995
+    },
+    {
+        "order_id": 1003,
+        "customer_name": "Oluwatobi",
+        "phone_number": "09087654321",
+        "garment_type": "Cap",
+        "quantity": 5,
+        "delivery_date": "5/6/1234",
+        "price": 5000,
+        "deposit": 4000,
+        "balance": 1000
     }
 ]

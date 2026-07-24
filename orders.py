@@ -14,7 +14,8 @@ from storage import (
     save_order,
     view_orders,
     load_orders,
-    save_all_orders
+    save_all_orders,
+    generate_order_id
 )
 
 def create_order():
@@ -29,6 +30,8 @@ def create_order():
 
     balance = price - deposit
 
+    order_id = generate_order_id()
+
     display_receipt(
         customer_name,
         phone_number,
@@ -41,6 +44,7 @@ def create_order():
     )
 
     order = {
+        "order_id": order_id,
         "customer_name": customer_name,
         "phone_number": phone_number,
         "garment_type": garment_type,
@@ -58,10 +62,15 @@ def create_order():
 def search_order():
 
     print("=" * 30)
-    print("       SEARCH ORDER")
+    print("      SEARCH ORDER")
     print("=" * 30)
 
-    search_name = input("Enter customer name: ").strip()
+    while True:
+        try:
+            search_id = int(input("Enter Order ID: "))
+            break
+        except ValueError:
+            print("Please enter numbers only.")
 
     orders = load_orders()
 
@@ -69,13 +78,13 @@ def search_order():
 
     for order in orders:
 
-        if order["customer_name"].lower() == search_name.lower():
+        if order["order_id"] == search_id:
 
             found = True
 
-            print("\nOrder found!")
+            print("\nOrder Found")
             print("=" * 30)
-
+            print("Order ID      :", order["order_id"])
             print("Customer Name :", order["customer_name"])
             print("Phone Number  :", order["phone_number"])
             print("Garment Type  :", order["garment_type"])
@@ -84,7 +93,6 @@ def search_order():
             print("Price         : ₦", order["price"])
             print("Deposit       : ₦", order["deposit"])
             print("Balance       : ₦", order["balance"])
-
             print("=" * 30)
 
             break
@@ -92,14 +100,18 @@ def search_order():
     if not found:
         print("Order not found.")
 
-
 def edit_order():
 
     print("=" * 30)
-    print("        EDIT ORDER")
+    print("       EDIT ORDER")
     print("=" * 30)
 
-    search_name = input("Enter customer name: ").strip()
+    while True:
+        try:
+            search_id = int(input("Enter Order ID: "))
+            break
+        except ValueError:
+            print("Please enter numbers only.")
 
     orders = load_orders()
 
@@ -107,13 +119,13 @@ def edit_order():
 
     for order in orders:
 
-        if order["customer_name"].lower() == search_name.lower():
+        if order["order_id"] == search_id:
 
             found = True
 
-            print("\nCurrent Order:")
+            print("\nCurrent Order")
             print("=" * 30)
-
+            print("Order ID      :", order["order_id"])
             print("Customer Name :", order["customer_name"])
             print("Phone Number  :", order["phone_number"])
             print("Garment Type  :", order["garment_type"])
@@ -122,7 +134,6 @@ def edit_order():
             print("Price         : ₦", order["price"])
             print("Deposit       : ₦", order["deposit"])
             print("Balance       : ₦", order["balance"])
-
             print("=" * 30)
 
             print("\nEnter new details:")
@@ -132,17 +143,13 @@ def edit_order():
             order["delivery_date"] = get_delivery_date()
             order["price"] = get_price()
             order["deposit"] = get_deposit(order["price"])
-
-            order["balance"] = (
-                order["price"] - order["deposit"]
-            )
+            order["balance"] = order["price"] - order["deposit"]
 
             save_all_orders(orders)
 
             print("Order updated successfully.")
 
             break
-
 
     if not found:
         print("Order not found.")
@@ -151,32 +158,35 @@ def edit_order():
 def delete_order():
 
     print("=" * 30)
-    print("       DELETE ORDER")
+    print("      DELETE ORDER")
     print("=" * 30)
 
-    search_name = input("Enter customer name: ").strip()
+    while True:
+        try:
+            search_id = int(input("Enter Order ID: "))
+            break
+        except ValueError:
+            print("Please enter numbers only.")
 
     orders = load_orders()
 
-    found = False
-
     updated_orders = []
+    found = False
 
     for order in orders:
 
-        if order["customer_name"].lower() == search_name.lower():
+        if order["order_id"] == search_id:
 
             found = True
 
-            print("\nOrder found:")
+            print("\nOrder Found")
             print("=" * 30)
-
+            print("Order ID      :", order["order_id"])
             print("Customer Name :", order["customer_name"])
             print("Phone Number  :", order["phone_number"])
             print("Garment Type  :", order["garment_type"])
             print("Quantity      :", order["quantity"])
             print("Price         : ₦", order["price"])
-
             print("=" * 30)
 
             confirm = input(
@@ -187,16 +197,10 @@ def delete_order():
                 print("Order deleted successfully.")
                 continue
 
-            else:
-                updated_orders.append(order)
-
-        else:
-            updated_orders.append(order)
-
+        updated_orders.append(order)
 
     if not found:
         print("Order not found.")
         return
-
 
     save_all_orders(updated_orders)

@@ -1041,3 +1041,231 @@ Next planned improvements:
 - Introduce SQLite database
 - Build web interface
 - Connect frontend and backend concepts
+
+---
+
+# Learning Update - Order ID System
+
+## Why Order IDs Were Added
+
+Originally, customer names were used to identify orders.
+
+Example:
+
+```text
+Ade
+```
+
+This created a problem because two customers can have the same name.
+
+Example:
+
+```text
+Ade
+Ade
+```
+
+The program would not know which order to edit or delete.
+
+The solution was to introduce a unique Order ID.
+
+Example:
+
+```text
+1001
+1002
+1003
+```
+
+Every order now has its own permanent identity.
+
+---
+
+# Primary Key Concept
+
+An Order ID acts like a **Primary Key**.
+
+A primary key uniquely identifies a record.
+
+Unlike customer names, the Order ID never changes.
+
+Example:
+
+```text
+Order ID      : 1002
+Customer Name : Ade
+```
+
+If the customer changes their name later, the Order ID remains the same.
+
+---
+
+# Automatic ID Generation
+
+The application automatically generates the next available Order ID.
+
+Example:
+
+Existing IDs:
+
+```text
+1001
+1002
+1003
+```
+
+Python collects them into a list:
+
+```python
+existing_ids = [1001, 1002, 1003]
+```
+
+The program finds the largest ID:
+
+```python
+max(existing_ids)
+```
+
+Result:
+
+```text
+1003
+```
+
+The next Order ID becomes:
+
+```text
+1004
+```
+
+---
+
+# New Python Concept: Empty Lists
+
+Example:
+
+```python
+existing_ids = []
+```
+
+Meaning:
+
+Create an empty list that will be filled later.
+
+During execution:
+
+```python
+existing_ids.append(order["order_id"])
+```
+
+Each Order ID is added to the list.
+
+Final result:
+
+```python
+existing_ids = [1001, 1002, 1003]
+```
+
+---
+
+# Searching by ID
+
+Old approach:
+
+```python
+customer_name
+```
+
+New approach:
+
+```python
+order["order_id"]
+```
+
+Searching by integers is more reliable than searching by text.
+
+---
+
+# Updating Dictionaries
+
+A dictionary can be modified without creating another one.
+
+Example:
+
+Before:
+
+```python
+order["price"] = 50000
+```
+
+After:
+
+```python
+order["price"] = 80000
+```
+
+Only the value changes.
+
+The dictionary itself remains the same object.
+
+---
+
+# Filtering Lists
+
+Deletion no longer removes text manually.
+
+Instead, a new list is created.
+
+Concept:
+
+```text
+Original Orders
+      │
+      ▼
+Check every order
+      │
+      ├── Keep
+      └── Remove
+```
+
+Only the remaining orders are saved back into `orders.json`.
+
+This is called **filtering**.
+
+---
+
+# Software Engineering Concepts Learned
+
+This stage introduced several important concepts:
+
+- Modular Programming
+- Separation of Concerns
+- JSON Serialization
+- JSON Deserialization
+- CRUD Operations
+- Persistent Storage
+- Primary Keys
+- Data Modelling
+- List Filtering
+- Dictionary Mutation
+
+These concepts are widely used in backend development and database-driven applications.
+
+---
+
+# Project Milestone
+
+The application has reached a complete terminal-based CRUD implementation.
+
+Completed:
+
+- Create Orders
+- View Orders
+- Search by Order ID
+- Edit by Order ID
+- Delete by Order ID
+- JSON Storage
+- Automatic Order ID Generation
+- Modular Architecture
+
+The project is now ready for migration to a Flask web application while reusing most of the existing business logic.
