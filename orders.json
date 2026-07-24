@@ -31,5 +31,16 @@
         "price": 5000,
         "deposit": 4000,
         "balance": 1000
+    },
+    {
+        "order_id": 1004,
+        "customer_name": "Ace",
+        "phone_number": "+2347014287325",
+        "garment_type": "Good",
+        "quantity": 500,
+        "delivery_date": "06/05/2025",
+        "price": 7000000,
+        "deposit": 5000000,
+        "balance": 2000000
     }
 ]
